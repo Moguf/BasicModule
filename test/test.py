@@ -2,6 +2,11 @@
 # coding : utf-8
 
 
-import src
+from easyutill import cmdanime
+
+tmp = cmdanime.CafepyStdout()
+tmp.start()
+
+tmp.end()
 
 

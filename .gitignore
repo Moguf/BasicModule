@@ -94,3 +94,6 @@ ENV/
 
 !.gitkeep
 venv/*
+
+# for me.
+test.py
