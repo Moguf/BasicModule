@@ -3,9 +3,9 @@
 
 from setuptools import setup
 
-setup(name='easy_utill',
+setup(name='easyutill',
       version='0.0.1',
-      description='Easy utill provide memory usage, flush animation during  calculation and so on.',
+      description='Easy utill provide memory usage, flush animation during calculation and so on.',
       author='Mogu',
       author_email='kbu94984@gmail.com',
       url='',
