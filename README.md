@@ -28,7 +28,7 @@ python setup.py install
 
 ## How to use
 ```python
-import easyutill import cmdanime, memory
+from easyutill import cmdanime, memory
 
 ## For Command Line Animation.
 anm = cmdanime.Animation()
