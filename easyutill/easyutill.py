@@ -31,6 +31,8 @@ class MemMenager:
 
 
 class CafepyStdout:
+    '''
+    '''
     def __init__(self):
         self.duration_time = 0
         self.signal = Signal()

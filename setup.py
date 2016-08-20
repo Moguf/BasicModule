@@ -9,5 +9,6 @@ setup(name='easyutill',
       author='Mogu',
       author_email='kbu94984@gmail.com',
       url='',
-      packages=['src'],
+      license='MIT',
+      packages=['easyutill'],
       install_requires=[],)
