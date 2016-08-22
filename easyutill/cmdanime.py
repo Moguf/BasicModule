@@ -15,6 +15,8 @@ class Signal:
 
 class Animation:
     '''
+    .. code-block::python 
+       :emphasize-lines: 3,5
     '''
     def __init__(self):
         self.duration_time = 0
