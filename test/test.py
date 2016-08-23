@@ -2,11 +2,15 @@
 # coding : utf-8
 
 
-from easyutill import cmdanime
+import easyutill
 
-tmp = cmdanime.CafepyStdout()
-tmp.start()
 
-tmp.end()
+print(dir(easyutill))
+
+
+
+
+
+
 
 

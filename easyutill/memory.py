@@ -20,8 +20,6 @@ References
     1) in Ch13.4 Python Coookbook,Third edition [By David Beazley,Brian K. Jones], 2013.
 
 '''
-
-
 import resource
 
 
