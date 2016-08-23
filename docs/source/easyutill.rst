@@ -5,15 +5,9 @@ EasyUtill
    :maxdepth: 2
 
               
-.. automodule:: easyutill
+.. autoclass:: easyutill.CmdAnimation
+   :members:
 
+.. autoclass:: easyutill.MemUtill               
+   :members:
                 
-submodule
----------
-
-.. toctree::
-   :maxdepth 2
-   
-   memory
-
-   cmdanime

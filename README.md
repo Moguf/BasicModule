@@ -28,16 +28,16 @@ python setup.py install
 
 ## How to use
 ```python
-from easyutill import cmdanime, memory
+from easyutill import CmdAnimation,MemLimit
 
 ## For Command Line Animation.
-anm = cmdanime.Animation()
+anm = CmdAnimation()
 anm.start()
 # Your function here.
 anm.end()
 
 ## For Memory Limit 
-memlim = memory.Limit()
+memlim = MemLimit()
 memlim.set(8)
 # Memory Limit is 8Gb.
 
