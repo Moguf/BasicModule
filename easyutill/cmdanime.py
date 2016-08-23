@@ -13,7 +13,7 @@ class Signal:
     go = True
 
 
-class Animation:
+class CmdAnimation:
     '''
     .. code-block::python 
        :emphasize-lines: 3,5

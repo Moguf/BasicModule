@@ -1,4 +1,4 @@
-from .memory import Limit
-from .cmdanime import Animation
+from .memory import MemUtill
+from .cmdanime import CmdAnimation
 
-__all__ = ['Limit','Animation']
+__all__ = ['MemUtill','CmdAnimation']
