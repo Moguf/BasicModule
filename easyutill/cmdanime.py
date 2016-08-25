@@ -35,7 +35,7 @@ class CmdAnimation:
         self.msg = msg
 
     def start(self):
-        self.anim = threading.Thread(target=self.func, args=(msg, self.signal))
+        self.anim = threading.Thread(target=self.func, args=(self.msg, self.signal))
         self.anim.start()
         
     def _spin(self, msg, signal):
