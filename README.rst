@@ -13,7 +13,7 @@ Set Up
 
 Install virtualenv. (for protecting your Home environment.)
 
-::
+.. code-block:: bash
    
    python3 -m pip install -U pip setuptools
    python3 -m pip install virtualenv
@@ -22,7 +22,7 @@ Install virtualenv. (for protecting your Home environment.)
 
 activate virtualenv
 
-::
+.. code-block:: bash
    
    virtualenv -p python3 venv
    source venv/bin/activate
@@ -32,16 +32,21 @@ activate virtualenv
 build & install
 ---------------
 
-::
+.. code-block:: bash
    
+   pip install git+https://github.com/Moguf/easy_utill.git
+   # or 
+   git clone https://github.com/Moguf/easy_utill.git
+   cd easy_utill
    python setup.py build
    python setup.py install
-
+   
+   
 
 How to use
 ----------
 
-::
+.. code-block:: python
    
    from easyutill import CmdAnimation,MemLimit
    
