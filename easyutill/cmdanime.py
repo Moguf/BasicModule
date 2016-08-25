@@ -3,6 +3,7 @@
 '''
 
 '''
+import os
 import sys
 import time
 import threading
@@ -18,17 +19,29 @@ class CmdAnimation:
     .. code-block::python 
        :emphasize-lines: 3,5
     '''
-    def __init__(self):
-        self.duration_time = 0
+    def __init__(self, anim_type='spin', filename='', size=0):
+        """ 
+        :signal:     terminate threading
+        :anim_type:  [spin, progress]
+        :filename:   for showing progress bar.
+        :full_size:  for showing progress bar. 
+        """
+        self.full_size = size
         self.signal = Signal()
-        
-    def start(self):
-        msg = "Caluclating->\t: "
-        self.spinner = threading.Thread(target=self.spin,args=(msg,self.signal))
-        self.spinner.start()
+        self.duration_time = 0
+        self.filename = filename
+        self.types = {"spin": self._spin, "progress": self._progress}
+        self.func = self.types[anim_type]
 
-    def spin(self,msg,signal):
+    def start(self):
+        print(self.func)
+        msg = ''
+        self.anim = threading.Thread(target=self.func, args=(msg, self.signal))
+        self.anim.start()
+        
+    def _spin(self, msg, signal):
         # Show Spin.
+        msg = "Caluclating->\t: "
         spins  = '|/-\\'
         spins2 = '/-\\|'
         spins3 = '-\\|/'
@@ -43,9 +56,42 @@ class CmdAnimation:
             if not signal.go:
                 break
         sys.stdout.write('\x08'*(4+len(msg)))
+
+    def _progress(self, msg, signal):
+        while True:
+            now_size = self.get_size(self.filename)
+            self._showProgress(now_size)
+            return 
+            if self.full_size == now_size:
+                break
+        
+    def _showProgress(self, now_size):
+        # Show progress bar.
+        out = self._get_bar(now_size)
+        sys.stdout.write(out)
+        time.sleep(.2)
+        sys.stdout.flush()
+        sys.stdout.write('\x08'*len(out))
+        time.sleep(.1)        
+
+    def _get_bar(self, now_size):
+        _space = ' '
+        _bar = '='
+        _arrow = '>'
+        bar_size = 60
+        ratio = now_size / self.full_size
+        arrow = _bar * (int((ratio) * bar_size) - 1) + _arrow
+        space = _space * (bar_size - len(arrow))
+        percent = '{0:5.2f}%'.format(ratio * 100)
+        out = '['+ arrow + space + ']' + percent
+        return out
+        
+    def get_size(self, filename):
+        #:size:   byte.
+        return os.path.getsize(os.path.abspath(filename))
         
     def end(self):
         self.signal.go = False
-        self.spinner.join()
+        self.anim.join()
 
     
