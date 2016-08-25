@@ -14,6 +14,7 @@ Set Up
 Install virtualenv. (for protecting your Home environment.)
 
 ::
+   
    python3 -m pip install -U pip setuptools
    python3 -m pip install virtualenv
    # or
@@ -22,6 +23,7 @@ Install virtualenv. (for protecting your Home environment.)
 activate virtualenv
 
 ::
+   
    virtualenv -p python3 venv
    source venv/bin/activate
    # Removing virtual environment
@@ -31,6 +33,7 @@ build & install
 ---------------
 
 ::
+   
    python setup.py build
    python setup.py install
 
@@ -39,6 +42,7 @@ How to use
 ----------
 
 ::
+   
    from easyutill import CmdAnimation,MemLimit
    
    ## For Command Line Animation.
