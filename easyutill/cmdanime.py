@@ -19,7 +19,7 @@ class CmdAnimation:
     .. code-block::python 
        :emphasize-lines: 3,5
     '''
-    def __init__(self, anim_type='spin', filename='', size=0):
+    def __init__(self, anim_type='spin', filename='', size=0, msg=""):
         """ 
         :signal:     terminate threading
         :anim_type:  [spin, progress]
@@ -32,16 +32,14 @@ class CmdAnimation:
         self.filename = filename
         self.types = {"spin": self._spin, "progress": self._progress}
         self.func = self.types[anim_type]
+        self.msg = msg
 
     def start(self):
-        print(self.func)
-        msg = ''
         self.anim = threading.Thread(target=self.func, args=(msg, self.signal))
         self.anim.start()
         
     def _spin(self, msg, signal):
         # Show Spin.
-        msg = "Caluclating->\t: "
         spins  = '|/-\\'
         spins2 = '/-\\|'
         spins3 = '-\\|/'
