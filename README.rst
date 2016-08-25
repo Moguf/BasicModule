@@ -48,20 +48,39 @@ How to use
 
 .. code-block:: python
    
-   from easyutill import CmdAnimation,MemLimit
+   from easyutill import CmdAnimation, MemLimit
    
-   ## For Command Line Animation.
+   ## For Command Line Animation. 
    anm = CmdAnimation()
    anm.start()
    # Your function here.
    anm.end()
-
+   
    ## For Memory Limit 
    memutl = MemUtill()
    memutl.set(8)
    # Memory Limit is 8Gb.
 
+When you want to get a big data from web server and know download progress, you have better to use progress-mode.
 
+.. code-block:: python
+                
+   from urllib.request import urlopen, urlretrieve
+   from easyutill import CmdAnimation
+   
+   ## For Command Line Animation.
+   url = "http\://hoge.com/target.html"
+   filename = "target.html"
+   meta = urlopen(url).info()
+   size = int(meta.get_all("Content-Length")[0])
+   anm = CmdAnimation('progress', filename=filename, size=size)
+   anm.start()
+   urlretrieve(url, filename)
+
+   """ 
+   ex)
+   [======>                       ] 12.01%
+   """
 
 
 
