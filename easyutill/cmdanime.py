@@ -56,10 +56,13 @@ class CmdAnimation:
         sys.stdout.write('\x08'*(4+len(msg)))
 
     def _progress(self, msg, signal):
-        time.sleep(5.)
         sys.stdout.write(msg)
         while True:
-            now_size = self.get_size(self.filename)
+            try:
+                now_size = self.get_size(self.filename)
+            except:
+                continue
+            
             self._showProgress(now_size)
             if self.full_size == now_size:
                 break
