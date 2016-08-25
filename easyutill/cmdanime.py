@@ -56,6 +56,7 @@ class CmdAnimation:
         sys.stdout.write('\x08'*(4+len(msg)))
 
     def _progress(self, msg, signal):
+        time.sleep(5.)
         while True:
             now_size = self.get_size(self.filename)
             self._showProgress(now_size)
