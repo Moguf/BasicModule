@@ -61,7 +61,6 @@ class CmdAnimation:
         while True:
             now_size = self.get_size(self.filename)
             self._showProgress(now_size)
-            return 
             if self.full_size == now_size:
                 break
         
