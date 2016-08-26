@@ -23,7 +23,7 @@ References
 import resource
 
 
-class MemUtill:
+class MemUtil:
     """ basic description """
     __doc__ = "here"
     __all__ = ["set","show","__init__"]

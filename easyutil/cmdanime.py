@@ -1,6 +1,30 @@
 #!/usr/bin/env python3
 # coding : utf-8
 '''
+cmdanime.py
+~~~~~~~~~~~
+
+cmdanime.py provides command-line animation. When yor start to run a long calculation in python, 
+if there is no output in command-line, you are warried about whichever the program starts or not. 
+In that case, cmdanime.CmdAnimation show animation in command-line.
+
+.. code-block:: python
+   
+   from easyutil import CmdAnimation
+   
+   ## For Command Line Animation. 
+   anm = CmdAnimation()
+   anm.start()
+   # Your function here.
+   anm.end()
+
+
+.. autoclass:: easyutil.Signal
+    :members:
+
+.. autoclass:: easyutil.CmdAnimation
+    :members:
+
 
 '''
 import os
@@ -18,13 +42,13 @@ class CmdAnimation:
     '''
     .. code-block::python 
        :emphasize-lines: 3,5
+
     '''
     def __init__(self, anim_type='spin', filename='', size=0, msg=""):
         """ 
-        :signal:     terminate threading
-        :anim_type:  [spin, progress]
-        :filename:   for showing progress bar.
-        :full_size:  for showing progress bar. 
+        :anim_type[str]:  [spin, progress]
+        :filename[str]:   for showing progress bar.
+        :full_size[int]:  for showing progress bar. 
         """
         self.full_size = size
         self.signal = Signal()
@@ -35,6 +59,9 @@ class CmdAnimation:
         self.msg = msg
 
     def start(self):
+        '''
+        start() starts animation. 
+        '''
         self.anim = threading.Thread(target=self.func, args=(self.msg, self.signal))
         self.anim.start()
         
@@ -59,7 +86,7 @@ class CmdAnimation:
         sys.stdout.write(msg)
         while True:
             try:
-                now_size = self.get_size(self.filename)
+                now_size = self._get_size(self.filename)
             except:
                 continue
             self._showProgress(now_size)
@@ -87,11 +114,16 @@ class CmdAnimation:
         out = '['+ arrow + space + ']' + percent
         return out
         
-    def get_size(self, filename):
-        #:size:   byte.
+    def _get_size(self, filename):
+        '''
+        _get_size():    get a filesize form a filename and return the filsesize.
+        '''
         return os.path.getsize(os.path.abspath(filename))
         
     def end(self):
+        '''
+        end() stop animation. 
+        '''
         self.signal.go = False
         self.anim.join()
 

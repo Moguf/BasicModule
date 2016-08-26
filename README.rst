@@ -1,7 +1,7 @@
-Easy_utill (Python3 scripts)
+Easy_util (Python3 scripts)
 ============================
 
-Easy utill provide memory usage, flush animation during calculation and so on.
+Easy_util provide memory usage, flush animation during calculation and so on.
 
 Requirements
 ------------
@@ -34,10 +34,10 @@ build & install
 
 .. code-block:: bash
    
-   pip install git+https://github.com/Moguf/easy_utill.git
+   pip install git+https://github.com/Moguf/easy_util.git
    # or 
-   git clone https://github.com/Moguf/easy_utill.git
-   cd easy_utill
+   git clone https://github.com/Moguf/easy_util.git
+   cd easy_util
    python setup.py build
    python setup.py install
    
@@ -48,7 +48,7 @@ How to use
 
 .. code-block:: python
    
-   from easyutill import CmdAnimation, MemLimit
+   from easyutil import CmdAnimation, MemLimit
    
    ## For Command Line Animation. 
    anm = CmdAnimation()
@@ -57,16 +57,16 @@ How to use
    anm.end()
    
    ## For Memory Limit 
-   memutl = MemUtill()
+   memutl = MemUtil()
    memutl.set(8)
    # Memory Limit is 8Gb.
 
-When you want to get a big data from web server and know download progress, you have better to use progress-mode.
+When you want to get a big data from web server and know download progress, you had better to use progress-mode.
 
 .. code-block:: python
                 
    from urllib.request import urlopen, urlretrieve
-   from easyutill import CmdAnimation
+   from easyutil import CmdAnimation
    
    ## For Command Line Animation.
    url = "http\://hoge.com/target.html"
@@ -76,7 +76,7 @@ When you want to get a big data from web server and know download progress, you 
    anm = CmdAnimation('progress', filename=filename, size=size)
    anm.start()
    urlretrieve(url, filename)
-
+   anm.close()
    """ 
    ex)
    [======>                       ] 12.01%

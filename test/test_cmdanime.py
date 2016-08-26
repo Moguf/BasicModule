@@ -3,7 +3,7 @@
 
 import time
 import unittest
-from easyutill import CmdAnimation
+from easyutil import CmdAnimation
 
 class TestCmdAnimation(unittest.TestCase):
     @classmethod
