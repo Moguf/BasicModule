@@ -44,7 +44,7 @@ class CmdAnimation:
        :emphasize-lines: 3,5
 
     '''
-    def __init__(self, anim_type='spin', filename='', size=0, msg=""):
+    def __init__(self, anim_type='spin', filename='', size=0, msg='', msg2=''):
         """ 
         :anim_type[str]:  [spin, progress]
         :filename[str]:   for showing progress bar.
@@ -57,15 +57,16 @@ class CmdAnimation:
         self.types = {"spin": self._spin, "progress": self._progress}
         self.func = self.types[anim_type]
         self.msg = msg
+        self.msg2 = msg2
 
     def start(self):
         '''
         start() starts animation. 
         '''
-        self.anim = threading.Thread(target=self.func, args=(self.msg, self.signal))
+        self.anim = threading.Thread(target=self.func, args=(self.msg, self.msg2, self.signal))
         self.anim.start()
         
-    def _spin(self, msg, signal):
+    def _spin(self, msg, msg2, signal):
         # Show Spin.
         spins  = '|/-\\'
         spins2 = '/-\\|'
@@ -82,20 +83,20 @@ class CmdAnimation:
                 break
         sys.stdout.write('\x08'*(4+len(msg)))
 
-    def _progress(self, msg, signal):
+    def _progress(self, msg, msg2, signal):
         sys.stdout.write(msg)
         while True:
             try:
                 now_size = self._get_size(self.filename)
             except:
                 continue
-            self._showProgress(now_size)
+            self._showProgress(msg2, now_size)
             if self.full_size == now_size:
                 break
         
     def _showProgress(self, now_size):
         # Show progress bar.
-        out = self._get_bar(now_size)
+        out = msg2 + self._get_bar(now_size)
         sys.stdout.write(out)
         time.sleep(.2)
         sys.stdout.flush()
