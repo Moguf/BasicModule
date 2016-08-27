@@ -74,7 +74,7 @@ class CmdAnimation:
         spins4 = '\\|/-'
         sys.stdout.write(msg)
         for i in itertools.cycle(range(4)):
-            out = "\t{}{}{}{}".format(spins[i],spins2[i],spins3[i],spins4[i])
+            out = "{}\t{}{}{}{}".format(msg2, spins[i], spins2[i], spins3[i], spins4[i])
             sys.stdout.write(out)
             sys.stdout.flush()
             sys.stdout.write('\x08'*len(out))
