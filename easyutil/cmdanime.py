@@ -94,7 +94,7 @@ class CmdAnimation:
             if self.full_size == now_size:
                 break
         
-    def _showProgress(self, now_size):
+    def _showProgress(self, msg2, now_size):
         # Show progress bar.
         out = msg2 + self._get_bar(now_size)
         sys.stdout.write(out)
