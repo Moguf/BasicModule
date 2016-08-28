@@ -33,7 +33,7 @@ import time
 import threading
 import itertools
 
-import easystring as es
+from estring import easystring as es
 
 class easyThread(threading.Thread):
     def __init__(self, func, args):
