@@ -1,5 +1,5 @@
 from .memory import MemUtil
 from .cmdanime import CmdAnimation, MultiCmdAnimation
-from .easy_string import *
+import easystring
 
-__all__ = ['MemUtil', 'CmdAnimation', 'easy_string', 'MultiCmdAnimation']
+__all__ = ['MemUtil', 'CmdAnimation',easystring.__all__ , 'MultiCmdAnimation']
