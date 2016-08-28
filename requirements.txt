@@ -19,3 +19,4 @@ Sphinx==1.4.6
 waitress==0.9.0
 WebOb==1.6.1
 WebTest==2.0.23
+git+https://github.com/Moguf/easy_util.git
