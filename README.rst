@@ -81,6 +81,3 @@ When you want to get a big data from web server and know download progress, you 
    ex)
    [======>                       ] 12.01%
    """
-
-
-
