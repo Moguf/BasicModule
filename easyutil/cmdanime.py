@@ -33,7 +33,7 @@ import time
 import threading
 import itertools
 
-from estring import easystring as es
+from easyutill import Estring
 
 class easyThread(threading.Thread):
     def __init__(self, func, args):
@@ -74,6 +74,7 @@ class CmdAnimation:
         self.msg = msg
         self.msg2 = msg2
         self.msg2_size = 20
+        self.es = Estring()
         
     def start(self):
         '''
@@ -192,7 +193,7 @@ class MultiCmdAnimation(CmdAnimation):
         # Show progress bar.
         out = ''
         for i, now_size in enumerate(now_sizes):
-            header = es.constant_width(msg2[i], 50)
+            header = self.es.constant_width(msg2[i], 50)
             out += header + self._get_bar(now_size, self.full_sizes[i])
         sys.stdout.write(out)
         time.sleep(.3)
@@ -214,6 +215,8 @@ class MultiCmdAnimation(CmdAnimation):
 
     
 if __name__ == "__main__":
+
+    """
     msgs  = ["msg:hello"+str(i) for i in range(4)]
     msgs2 = [u"msg2:helloあ" for i in range(4)]
     files = ["hello"+str(i)+'.txt' for i in range(4)]
@@ -221,5 +224,5 @@ if __name__ == "__main__":
     anm = MultiCmdAnimation("progress", filenames=files, msgs2=msgs2, sizes=sizes)
     anm.start()
     anm.end()
-
+    """
     

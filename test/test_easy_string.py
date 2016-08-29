@@ -3,7 +3,7 @@
 
 import time
 import unittest
-import easyutil
+from easyutil import estring as es
 
 class TestCmdAnimation(unittest.TestCase):
     @classmethod
@@ -14,18 +14,18 @@ class TestCmdAnimation(unittest.TestCase):
         pass
 
     def test_spin_animation(self):
-        print(dir(easyutil))
+        print(dir(es))
         string1 = 'あいうえおThread1あいつ'
-        string2 = 'fjkdflajThread1あいつ'    
-
-        self.assertEqual(string_width(string1),[2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2])
-        self.assertEqual(string_width(string2),[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2])
+        string2 = 'fjkdflajThread1あいつ'
+                
+        self.assertEqual(es.string_width(string1),[2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2])
+        self.assertEqual(es.string_width(string2),[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2])
         
-        self.assertEqual(constant_width(string1, 10), 'あいうえお')
-        self.assertEqual(constant_width(string2, 10), 'fjkdflajTh')
+        self.assertEqual(es.constant_width(string1, 10), 'あいうえお')
+        self.assertEqual(es.constant_width(string2, 10), 'fjkdflajTh')
 
-        self.assertEqual(constant_width(string1, 30), 'あいうえおThread1あいつ       ')
-        self.assertEqual(constant_width(string2, 30), 'fjkdflajThread1あいつ         ')
+        self.assertEqual(es.constant_width(string1, 30), 'あいうえおThread1あいつ       ')
+        self.assertEqual(es.constant_width(string2, 30), 'fjkdflajThread1あいつ         ')
 
         
     def tearDown(self):

@@ -1,5 +1,5 @@
 from .memory import MemUtil
 from .cmdanime import CmdAnimation, MultiCmdAnimation
-import estring
+from .estring import Estring
 
-__all__ = ['MemUtil', 'CmdAnimation', 'MultiCmdAnimation', 'estring']
+__all__ = ['MemUtil', 'CmdAnimation', 'MultiCmdAnimation', 'Estring']

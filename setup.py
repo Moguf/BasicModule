@@ -4,7 +4,7 @@
 from setuptools import setup
 
 setup(name='easy_util',
-      version='0.0.1',
+      version='0.0.dev1',
       description='Easy util provide memory usage, flush animation during calculation and so on.',
       author='Mogu',
       author_email='kbu94984@gmail.com',
