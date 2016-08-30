@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
-# coding:utf-8
+# fileencoding:utf-8
 
+import os
+import sys
 import time
 import unittest
-from easyutil import CmdAnimation
+
+sys.path.append(os.path.abspath('../easyutil'))
+from cmdanime import CmdAnimation
 
 class TestCmdAnimation(unittest.TestCase):
     @classmethod
-    def setUpClass(self):
+    def setUpClass(cls):
         pass
     
     def setUp(self):
@@ -20,10 +24,12 @@ class TestCmdAnimation(unittest.TestCase):
         self.tclass.end()
         
     def test_progress_animation(self):
-        self.tclass = CmdAnimation(anim_type="progress", filename="test_cmdanime.py", size=100)
+        self.tclass = CmdAnimation(anim_type="progress", filename="test_cmdanime.py", size=1000)
         self.tclass.start()
+        self.assertEqual()
         time.sleep(3.)
-        self.tclass.end()        
+        self.tclass.end()
+        raise KeyboardInterrupt()
         
     def test_get_size(self):
         self.tclass = CmdAnimation()
@@ -33,7 +39,7 @@ class TestCmdAnimation(unittest.TestCase):
         pass
 
     @classmethod
-    def tearDownClass(self):
+    def tearDownClass(cls):
         pass
 
 if __name__ == '__main__':

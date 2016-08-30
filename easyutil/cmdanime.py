@@ -33,7 +33,7 @@ import time
 import threading
 import itertools
 
-from easyutill import Estring
+import estring as es
 
 class easyThread(threading.Thread):
     def __init__(self, func, args):
@@ -74,7 +74,6 @@ class CmdAnimation:
         self.msg = msg
         self.msg2 = msg2
         self.msg2_size = 20
-        self.es = Estring()
         
     def start(self):
         '''
@@ -105,11 +104,14 @@ class CmdAnimation:
         while True:
             try:
                 now_size = self._get_size(self.filename)
-            except:
-                continue
-            self._showProgress(msg2, now_size)
-            if self.full_size == now_size:
-                break
+            except KeyboardInterrupt:
+                print("Stop from keyboard.")
+                self.end()
+                raise
+            finally:
+                self._showProgress(msg2, now_size)
+                if self.full_size == now_size:
+                    break
             
     def _showProgress(self, msg2, now_size):
         # Show progress bar.
@@ -188,12 +190,13 @@ class MultiCmdAnimation(CmdAnimation):
             now_sizes = [ get_names[i].get_value() for i, _dump in enumerate(get_names) ]
             self._showProgress(msg2, now_sizes)
             [ get_names[i].join() for i, dump in enumerate(get_names) if now_sizes[i] == self.full_sizes[i]]
+            
         
     def _showProgress(self, msg2, now_sizes):
         # Show progress bar.
         out = ''
         for i, now_size in enumerate(now_sizes):
-            header = self.es.constant_width(msg2[i], 50)
+            header = es.constant_width(msg2[i], 50)
             out += header + self._get_bar(now_size, self.full_sizes[i])
         sys.stdout.write(out)
         time.sleep(.3)
