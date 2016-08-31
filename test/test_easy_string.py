@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
 # fileencoding=utf-8
 
+import os
+import sys
 import time
 import unittest
-from easyutil import estring 
+
+sys.path.append(os.path.abspath('../easyutil'))
+import estring as es
+
 
 class TestCmdAnimation(unittest.TestCase):
     @classmethod
