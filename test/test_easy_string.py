@@ -3,7 +3,7 @@
 
 import time
 import unittest
-from easyutil import estring as es
+from easyutil import estring 
 
 class TestCmdAnimation(unittest.TestCase):
     @classmethod
@@ -14,9 +14,10 @@ class TestCmdAnimation(unittest.TestCase):
         pass
 
     def test_spin_animation(self):
+        es = estring.Estring()
         print(dir(es))
-        string1 = 'あいうえおThread1あいつ'
-        string2 = 'fjkdflajThread1あいつ'
+        string1 = u'あいうえおThread1あいつ'.encode('utf-8')
+        string2 = u'fjkdflajThread1あいつ'
                 
         self.assertEqual(es.string_width(string1),[2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2])
         self.assertEqual(es.string_width(string2),[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2])
